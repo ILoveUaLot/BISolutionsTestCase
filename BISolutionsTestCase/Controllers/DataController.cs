@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using LinkedList;
 namespace BISolutionsTestCase.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/data")]
     [ApiController]
     public class DataController : ControllerBase
     {
