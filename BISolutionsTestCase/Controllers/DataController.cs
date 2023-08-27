@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using LinkedList;
 namespace BISolutionsTestCase.Controllers
 {
     [Route("api/[controller]")]
@@ -27,6 +27,19 @@ namespace BISolutionsTestCase.Controllers
             string normalizedStr = str.ToLower(); // To lower for check equals of symbols
             string reversedString = new string(normalizedStr.Reverse().ToArray());
             return Ok(str.Equals(reversedString));
+        }
+
+        [HttpPost("SortingIntegralNumbers")]
+        public IActionResult SortingNumbers([FromBody] int[] numbers)
+        {
+            if(numbers.Length == 0 || numbers == null) return BadRequest();
+            LinkedList.LinkedList<int> list = new LinkedList.LinkedList<int>();
+            foreach (var item in numbers)
+            {
+                list.Add(item);
+            }
+            list.InsertionSort();
+            return Ok(list.GetValues());
         }
     }
 }
