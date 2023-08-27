@@ -77,5 +77,17 @@ namespace LinkedList
             // Update the head pointer to point to the start of the sorted list.
             head = sorted;
         }
+
+        public List<T> GetValues()
+        {
+            Node<T> current = head;
+            List<T> result = new List<T>();
+            while(current != null)
+            {
+                result.Add(current.Value);
+                current = current.Next;
+            }
+            return result;
+        }
     }
 }
