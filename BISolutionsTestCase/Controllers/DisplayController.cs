@@ -32,6 +32,13 @@ namespace BISolutionsTestCase.Controllers
             return Ok(result);
         }
 
-
+        [HttpGet("displaySortedNumbers")]
+        public async Task<IActionResult> GetSortingNumbers(int[] nums)
+        {
+            var client = _client.CreateClient("PostingDataClient");
+            HttpResponseMessage response = await client.PostAsJsonAsync("SortingIntegralNumbers", nums);
+            var result = await response.Content.ReadAsStringAsync();
+            return Ok(result);
+        }
     }
 }
