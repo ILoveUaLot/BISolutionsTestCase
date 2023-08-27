@@ -15,30 +15,42 @@ namespace BISolutionsTestCase.Controllers
 
 
         [HttpGet("displaySum")]
-        public async Task<IActionResult> GetSumOfOddNumbers(int[] nums)
+        public async Task<IActionResult> GetSumOfOddNumbers([FromQuery]int[] nums)
         {
             var client = _client.CreateClient("PostingDataClient");
-            HttpResponseMessage response = await client.PostAsJsonAsync("AddNumbers", nums);
-            var result = response.Content.ReadAsStringAsync();
-            return Ok(result);
+            HttpResponseMessage response = await client.PostAsJsonAsync($"{client.BaseAddress}/AddNumbers", nums);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync();
+                return Ok(result.Result);
+            }
+            return BadRequest();
         }
 
         [HttpGet("displayPalindrom")]
-        public async Task<IActionResult> GetPalindromCheckResult(string str)
+        public async Task<IActionResult> GetPalindromCheckResult([FromQuery] string str)
         {
             var client = _client.CreateClient("PostingDataClient");
-            HttpResponseMessage response = await client.PostAsJsonAsync("CheckPalindrom", str);
-            var result = response.Content.ReadAsStringAsync();
-            return Ok(result);
+            HttpResponseMessage response = await client.PostAsJsonAsync($"{client.BaseAddress}/CheckPalindrom", str);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync();
+                return Ok(result.Result);
+            }
+            return BadRequest();
         }
 
         [HttpGet("displaySortedNumbers")]
-        public async Task<IActionResult> GetSortingNumbers(int[] nums)
+        public async Task<IActionResult> GetSortingNumbers([FromQuery] int[] nums)
         {
             var client = _client.CreateClient("PostingDataClient");
-            HttpResponseMessage response = await client.PostAsJsonAsync("SortingIntegralNumbers", nums);
-            var result = await response.Content.ReadAsStringAsync();
-            return Ok(result);
+            HttpResponseMessage response = await client.PostAsJsonAsync($"{client.BaseAddress}/SortingIntegralNumbers", nums);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync();
+                return Ok(result.Result);
+            }
+            return BadRequest();
         }
     }
 }
