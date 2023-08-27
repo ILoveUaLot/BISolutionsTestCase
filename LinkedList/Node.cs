@@ -1,6 +1,6 @@
 ﻿namespace LinkedList
 {
-    internal class Node<T>
+    public class Node<T>
     {
         public T Value;
         public Node<T> Next;
