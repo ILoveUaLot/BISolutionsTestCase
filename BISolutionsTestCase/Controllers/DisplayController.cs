@@ -13,5 +13,16 @@ namespace BISolutionsTestCase.Controllers
             _client = client;
         }
 
+
+        [HttpGet("displaySum")]
+        public async Task<IActionResult> GetSumOfOddNumbers(int[] nums)
+        {
+            var client = _client.CreateClient("PostingDataClient");
+            HttpResponseMessage response = await client.PostAsJsonAsync("AddNumbers", nums);
+            var result = response.Content.ReadAsStringAsync();
+            return Ok(result);
+        }
+
+
     }
 }
