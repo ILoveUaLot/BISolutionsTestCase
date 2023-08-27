@@ -13,7 +13,7 @@ namespace BISolutionsTestCase
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddHttpClient("PostingData", cfg =>
+            builder.Services.AddHttpClient("PostingDataClient", cfg =>
             {
                 cfg.BaseAddress = new Uri("http://BISolutionsTestCase/api/data");
             });
