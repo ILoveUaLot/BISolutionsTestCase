@@ -19,5 +19,19 @@ namespace BISolutionsTests
 
             Assert.Equal(new int[] { 5, 10, 15 }, list.GetValues().ToArray());
         }
+
+        [Fact]
+        public void InsertionSort_ShouldSortValuesCorrectly()
+        {
+            LinkedList.LinkedList<int> list = new LinkedList.LinkedList<int>();
+
+            list.Add(15);
+            list.Add(5);
+            list.Add(10);
+
+            list.InsertionSort();
+
+            Assert.Equal(new int[] { 5, 10, 15 }, list.GetValues().ToArray());
+        }
     }
 }
