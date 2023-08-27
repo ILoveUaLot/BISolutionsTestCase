@@ -15,7 +15,7 @@ namespace BISolutionsTestCase
             builder.Services.AddSwaggerGen();
             builder.Services.AddHttpClient("PostingDataClient", cfg =>
             {
-                cfg.BaseAddress = new Uri("http://BISolutionsTestCase/api/data");
+                cfg.BaseAddress = new Uri("https://localhost:7007/api/data");
             });
             var app = builder.Build();
 
