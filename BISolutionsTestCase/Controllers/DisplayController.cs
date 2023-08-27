@@ -23,6 +23,15 @@ namespace BISolutionsTestCase.Controllers
             return Ok(result);
         }
 
+        [HttpGet("displayPalindrom")]
+        public async Task<IActionResult> GetPalindromCheckResult(string str)
+        {
+            var client = _client.CreateClient("PostingDataClient");
+            HttpResponseMessage response = await client.PostAsJsonAsync("CheckPalindrom", str);
+            var result = response.Content.ReadAsStringAsync();
+            return Ok(result);
+        }
+
 
     }
 }
