@@ -20,5 +20,13 @@ namespace BISolutionsTestCase.Controllers
             }
             return Ok(Math.Abs(sum));
         }
+
+        [HttpPost("CheckPalindrom")]
+        public IActionResult PalindromCheckController([FromBody]string str)
+        {
+            string normalizedStr = str.ToLower(); // To lower for check equals of symbols
+            string reversedString = new string(normalizedStr.Reverse().ToArray());
+            return Ok(str.Equals(reversedString));
+        }
     }
 }
